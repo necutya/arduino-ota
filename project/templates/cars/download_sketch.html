@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" action="" class="form" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <fieldset>
+            <legend>Завантаження скетчу</legend>
+            <div class="form_item">
+                {{ form.sketch.label()}}
+                {% if form.sketch.errors %}
+                    {{ form.sketch()}}
+                    {% for error in form.sketch.errors%}
+                        <span class="bad_input_text">{{ error }}</span>
+                    {% endfor %}
+                {% else %}
+                    {{ form.sketch()}}
+                {% endif %}
+            </div>
+
+            <div class="form_item">
+                {{ form.submit() }}
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

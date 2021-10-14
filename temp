@@ -1,0 +1,8 @@
+from run import app
+from project import db
+from project.auth.models import User, UserRoleEnum
+db.init(app)
+u1 = User(first_name="Artem", second_name="Lebedev", role=UserRoleEnum.teacher, email="art.lebedev2020@gmail.com")
+u1.set_password("123")
+db.session.add(u1)
+db.session.commit()
